@@ -3,13 +3,27 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'tareas',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'tareas',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./tareas/tareas.module').then( m => m.TareasPageModule)
+      },
+      {
+        path: ':tareaId',
+        loadChildren: () => import('./tareas/tarea-detail/tarea-detail.module').then( m => m.TareaDetailPageModule)
+      }
+    ]
+
   },
 ];
 

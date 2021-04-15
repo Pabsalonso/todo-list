@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button><ion-icon slot="icon-only" name="add"></ion-icon></ion-button>
+      <ion-button><ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+        <ion-list-header>
+          <ion-label>Tareas Pendientes</ion-label>
+        </ion-list-header>
+          <ion-radio-group>
+            <ion-item *ngFor= "let tarea of lista"> <ion-radio slot="start"></ion-radio>{{tarea.name}}</ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
