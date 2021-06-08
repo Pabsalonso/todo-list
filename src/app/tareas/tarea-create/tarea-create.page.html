@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Añador una tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label>Nombre:</ion-label>
+  <ion-input placeholder="introduce un titulo" required  [(ngModel)]="aCrear.name"></ion-input>
+
+  <ion-label>Descripción:</ion-label>
+  <ion-input placeholder="introduce una descripción" required  [(ngModel)]="aCrear.description"></ion-input>
+
+  <ion-button (click) = "createTarea()" [routerLink] = "['./']" ></ion-button>
+
+</ion-content>

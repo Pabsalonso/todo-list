@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'tarea-detail',
     loadChildren: () => import('./tarea-detail/tarea-detail.module').then( m => m.TareaDetailPageModule)
+  },
+  {
+    path: 'tarea-create',
+    loadChildren: () => import('./tarea-create/tarea-create.module').then( m => m.TareaCreatePageModule)
   }
 ];
 

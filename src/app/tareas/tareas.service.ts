@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
+import {Tarea} from './tarea-interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TareasService {
-  private lista = [
+  private lista: Tarea[] = [
     {
-      tareaId:1,
+      id:'1',
       name:'tarea1',
-      descripcion: 'realizar el todo list'
+      description: 'realizar el todo list'
     },
     {
-      tareaId:2,
+      id:'2',
       name:'test',
-      descripcion: 'terminar el todo list'
+      description: 'terminar el todo list'
     }
   ];
   constructor() { }
@@ -22,12 +23,14 @@ export class TareasService {
     return [...this.lista];
   }
 
-  getTask(){
-
+  getTask(id: string){
+    return {
+      ...this.lista.find(task => task.id === id)
+    };
   }
 
-  addTask() {
-
+  addTask(tarea: Tarea) {
+    this.lista.push(tarea);
   }
 
   deleteTasks(){
