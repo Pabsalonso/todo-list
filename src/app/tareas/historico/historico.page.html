@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color='primary'>
-    <ion-title class='ion-text-center'>Tareas</ion-title>
+    <ion-title class='ion-text-center'>Histórico</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button>
       </ion-menu-button>
@@ -14,19 +14,14 @@
       <ion-col>
         <ion-list>
           <ion-list-header>
-            <h1>Tareas Pendientes</h1>
+            <h1>Histórico de tareas completadas</h1>
           </ion-list-header>
-          <ion-item *ngFor= "let tarea of lista" [routerLink] = "['/tareas', tarea.id]">
+          <ion-item *ngFor = "let tarea of historico" [routerLink] = "['/tareas', tarea.id]">
             {{tarea.name}}
           </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color='tertiary' (click)= "createTask()">
-      <ion-icon name="add" ></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>
 

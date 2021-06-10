@@ -23,8 +23,25 @@ const routes: Routes = [
         loadChildren: () => import('./tareas/tarea-detail/tarea-detail.module').then( m => m.TareaDetailPageModule)
       }
     ]
-
   },
+  {
+    path: 'newTask',
+    loadChildren: () => import('./tareas/tarea-create/tarea-create.module').then( m => m.TareaCreatePageModule)
+  },
+  {
+    path: 'historico',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./tareas/historico/historico-routing.module').then( m => m.HistoricoPageRoutingModule)
+      },
+      {
+        path: ':tareaId',
+        loadChildren: () => import('./tareas/tarea-detail/tarea-detail.module').then( m => m.TareaDetailPageModule)
+      }
+    ]
+
+  }
 ];
 
 @NgModule({

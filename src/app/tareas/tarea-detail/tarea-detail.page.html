@@ -1,9 +1,66 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title></ion-title>
+  <ion-toolbar color='secondary'>
+    <ion-buttons  slot= "start">
+      <ion-back-button defaultHref="/tareas"></ion-back-button>
+    </ion-buttons>
+    <ion-title class='ion-text-center'>Información de la tarea</ion-title>
+    <ion-buttons slot='end'>
+      <ion-button (click)= "deleteTask()">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <ion-card-title>Nombre:</ion-card-title>
+            <p>{{tarea.name}}</p>
 
+            <ion-card-title>Fecha de creación:</ion-card-title>
+            <p>{{tarea.date.toLocaleString()}}</p>
+
+            <ion-card-title>Descripción:</ion-card-title>
+            <p>{{tarea.description}}</p>
+
+            <ion-card-title>Estado de la tarea:</ion-card-title>
+            <td [ngSwitch]= "tarea.estado">
+              <div *ngSwitchCase="0"> Pendiente </div>
+              <div *ngSwitchCase="1"> En proceso </div>
+              <div *ngSwitchCase="2"> Terminada </div>
+            </td>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--<ion-row>
+      <ion-col>
+        <b>Nombre:</b> <br>
+        {{tarea.name}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <b>Fecha de creación:</b> <br>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <b>Descripción de la tarea:</b> <br>
+        {{tarea.description}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <b>Estado:</b> <br>
+        <div ng-class="pendiente :tarea.estado =='0'">Pendiente</div>
+      </ion-col>
+    </ion-row>-->
+  </ion-grid>
 </ion-content>

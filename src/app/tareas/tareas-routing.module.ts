@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'tarea-create',
     loadChildren: () => import('./tarea-create/tarea-create.module').then( m => m.TareaCreatePageModule)
+  },
+  {
+    path: 'historico',
+    loadChildren: () => import('./historico/historico.module').then( m => m.HistoricoPageModule)
   }
 ];
 

@@ -1,16 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Añador una tarea</ion-title>
+    <ion-title color="secundary">Añadir una tarea</ion-title>
+    <ion-buttons  slot= "start">
+      <ion-back-button defaultHref="/tareas"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-label>Nombre:</ion-label>
-  <ion-input placeholder="introduce un titulo" required  [(ngModel)]="aCrear.name"></ion-input>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-content>
+          <ion-label>Nombre:</ion-label>
+          <ion-input placeholder="Introduce un titulo" [(ngModel)]="name" required ></ion-input>
 
-  <ion-label>Descripción:</ion-label>
-  <ion-input placeholder="introduce una descripción" required  [(ngModel)]="aCrear.description"></ion-input>
+          <ion-label>Descripción:</ion-label>
+          <ion-input placeholder="introduce una descripción" required  [(ngModel)]="description"></ion-input>
 
-  <ion-button (click) = "createTarea()" [routerLink] = "['./']" ></ion-button>
+          <ion-button (click) = "createTarea()"  ></ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
 </ion-content>

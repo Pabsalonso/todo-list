@@ -10,15 +10,20 @@ import { Router } from '@angular/router';
 export class TareasPage implements OnInit {
   lista = [];
 
-  constructor(private tareasService: TareasService,
-              private router: Router) {}
+  constructor(
+    private tareasService: TareasService,
+    private router: Router) {}
 
   ngOnInit() {
-    this.lista = this.tareasService.getTasks();
+    this.lista = this.tareasService.getToDo();
   }
 
-  goCreate(){
-    this.router.navigate(['/tareas/tarea-create']);
+  ionViewWillEnter(){
+    this.lista = this.tareasService.getToDo();
+  }
+
+  createTask(){
+    this.router.navigate(['/newTask']);
   }
 
 }

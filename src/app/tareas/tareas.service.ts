@@ -8,19 +8,63 @@ export class TareasService {
   private lista: Tarea[] = [
     {
       id:'1',
-      name:'tarea1',
-      description: 'realizar el todo list'
+      name:'Crear la todo List',
+      date:new Date(),
+      description: 'Realizar el todo list para poder aprobar la asignatura',
+      estado: '0'
     },
     {
       id:'2',
-      name:'test',
-      description: 'terminar el todo list'
+      name:'Comprobar que funciona bien',
+      date:new Date(),
+      description: 'Terminar el todo list de manera que funcione correctamente',
+      estado: '1'
+    },
+    {
+      id:'3',
+      name:'Testear los historicos',
+      date:new Date(),
+      description: 'Terminar el todo list de manera que funcione correctamente',
+      estado: '2'
+    },{
+      id:'4',
+      name:'Testear los historicos',
+      date:new Date(),
+      description: 'Terminar el todo list de manera que funcione correctamente',
+      estado: '2'
+    },{
+      id:'5',
+      name:'Hacer bien el crear',
+      date:new Date(),
+      description: 'realizar bien el formato y comprobar que no deja vacios',
+      estado: '1'
+    },{
+      id:'6',
+      name:'hacer que cambie el color de las tarjetas en funcion del estado',
+      date:new Date(),
+      description: 'Terminar el todo list de manera que funcione correctamente',
+      estado: '1'
+    },{
+      id:'7',
+      name:'Poder ordenar',
+      date:new Date(),
+      description: 'Terminar el todo list de manera que funcione correctamente',
+      estado: '1'
     }
+
   ];
   constructor() { }
 
   getTasks() {
     return [...this.lista];
+  }
+
+  getToDo() {
+    return this.lista.filter(tarea => tarea.estado !== '2');
+  }
+
+  getCompleted(){
+    return this.lista.filter(tarea => tarea.estado === '2');
   }
 
   getTask(id: string){
@@ -29,11 +73,17 @@ export class TareasService {
     };
   }
 
-  addTask(tarea: Tarea) {
-    this.lista.push(tarea);
+  addTask(name: string, description: string ) {
+    this.lista.push({
+      id: this.lista.length +1 + '',
+      name,
+      date: new Date(),
+      description,
+      estado: '1',
+    });
   }
 
-  deleteTasks(){
-
+  deleteTask(id: string){
+    this.lista = this.lista.filter(tarea => tarea.id !== id);
   }
 }
