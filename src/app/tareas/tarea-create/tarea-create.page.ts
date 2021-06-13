@@ -2,8 +2,6 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {TareasService} from '../tareas.service';
 import {Router} from '@angular/router';
 
-import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
-
 @Component({
   selector: 'app-tarea-create',
   templateUrl: './tarea-create.page.html',

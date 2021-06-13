@@ -12,13 +12,27 @@
     <ion-col>
       <ion-card>
         <ion-card-content>
-          <ion-label>Nombre:</ion-label>
-          <ion-input placeholder="Introduce un titulo" [(ngModel)]="name" required ></ion-input>
+          <ion-row><ion-card-title>Nombre:</ion-card-title></ion-row>
+          <ion-row>
+            <mat-form-field appearance="legacy">
+              <mat-label>Introduce un título de tarea</mat-label>
+              <input matInput [(ngModel)]="name" required ="Título">
+              <mat-icon matSuffix>title</mat-icon>
+            </mat-form-field>
+          </ion-row>
 
-          <ion-label>Descripción:</ion-label>
-          <ion-input placeholder="introduce una descripción" required  [(ngModel)]="description"></ion-input>
+          <ion-row><ion-card-title>Descripción:</ion-card-title></ion-row>
+          <ion-row>
+            <mat-form-field appearance="legacy">
+              <mat-label>Escribe una descripción para la tares</mat-label>
+              <input matInput [(ngModel)]="description" required ="Título">
+              <mat-icon matSuffix>description</mat-icon>
+            </mat-form-field>
+          </ion-row>
 
-          <ion-button (click) = "createTarea()"  ></ion-button>
+          <ion-row>
+            <button mat-raised-button color="primary" (click) = "createTarea()">Crear Tarea</button>
+          </ion-row>
         </ion-card-content>
       </ion-card>
     </ion-col>

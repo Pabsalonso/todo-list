@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TareaDetailPageRoutingModule } from './tarea-detail-routing.module';
 
 import { TareaDetailPage } from './tarea-detail.page';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TareaDetailPageRoutingModule
+    TareaDetailPageRoutingModule,
+    MatRadioModule
   ],
   declarations: [TareaDetailPage]
 })

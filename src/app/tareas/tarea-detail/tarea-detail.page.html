@@ -29,11 +29,15 @@
             <p>{{tarea.description}}</p>
 
             <ion-card-title>Estado de la tarea:</ion-card-title>
-            <td [ngSwitch]= "tarea.estado">
-              <div *ngSwitchCase="0"> Pendiente </div>
-              <div *ngSwitchCase="1"> En proceso </div>
-              <div *ngSwitchCase="2"> Terminada </div>
-            </td>
+
+            <mat-radio-group
+            aria-label="Select an option"
+            class = "columna-radio-group"
+            [(ngModel)]="estadoNuevo" (change)="updateTask()">
+              <mat-radio-button value="0">Pendiente</mat-radio-button>
+              <mat-radio-button value="1">En proceso</mat-radio-button>
+              <mat-radio-button value="2">Completada</mat-radio-button>
+            </mat-radio-group>
 
           </ion-card-content>
         </ion-card>

@@ -9,21 +9,21 @@ export class TareasService {
     {
       id:'1',
       name:'Crear la todo List',
-      date:new Date(),
+      date:new Date('2019-06-28'),
       description: 'Realizar el todo list para poder aprobar la asignatura',
       estado: '0'
     },
     {
       id:'2',
       name:'Comprobar que funciona bien',
-      date:new Date(),
+      date:new Date('1999-06-28'),
       description: 'Terminar el todo list de manera que funcione correctamente',
       estado: '1'
     },
     {
       id:'3',
       name:'Testear los historicos',
-      date:new Date(),
+      date:new Date('2020-06-28'),
       description: 'Terminar el todo list de manera que funcione correctamente',
       estado: '2'
     },{
@@ -55,12 +55,12 @@ export class TareasService {
   ];
   constructor() { }
 
-  getTasks() {
-    return [...this.lista];
-  }
-
-  getToDo() {
-    return this.lista.filter(tarea => tarea.estado !== '2');
+  getTasks(tipo: string) {
+    switch(tipo){
+      case 'pendiente': return this.lista.filter(tarea => tarea.estado === '0');
+      case 'progreso': return this.lista.filter(tarea => tarea.estado === '1');
+      case 'todos': return this.lista.filter(tarea => tarea.estado !== '2');
+    }
   }
 
   getCompleted(){
@@ -79,11 +79,16 @@ export class TareasService {
       name,
       date: new Date(),
       description,
-      estado: '1',
+      estado: '0',
     });
+  }
+
+  updateTask(id: string, estado: string){
+    this.lista.find(task => task.id === id).estado = estado;
   }
 
   deleteTask(id: string){
     this.lista = this.lista.filter(tarea => tarea.id !== id);
   }
+
 }

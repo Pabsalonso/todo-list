@@ -5,24 +5,70 @@
       <ion-menu-button>
       </ion-menu-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Ordenar las tareas">
+        <mat-icon>sort</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button  mat-menu-item (click) = "sortByName()">
+          <mat-icon>sort_by_alpha</mat-icon>
+          <span>A-Z</span>
+        </button>
+        <button  mat-menu-item (click) = "sortByNameDesc()">
+          <mat-icon>sort_by_alpha</mat-icon>
+          <span>Z-A</span>
+        </button>
+        <button mat-menu-item (click) = "sortByDate()">
+          <mat-icon>date_range</mat-icon>
+          <span>Más Reciente</span>
+        </button>
+        <button mat-menu-item (click) = "sortByDateDesc()">
+          <mat-icon>date_range</mat-icon>
+          <span>Más Antigüo</span>
+        </button>
+        <button mat-menu-item (click)= "sortByState()">
+          <mat-icon>check_circle_outline</mat-icon>
+          <span>Más Prioridad</span>
+        </button>
+        <button mat-menu-item (click)= "sortByStateDesc()">
+          <mat-icon>check_circle_outline</mat-icon>
+          <span>Menos Prioridad</span>
+        </button>
+      </mat-menu>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
+    <ion-row >
+      <ion-col>
+        <h1 class="ion-text-center">Tareas Pendientes</h1>
+      </ion-col>
+      <ion-col>
+        <ion-item class="ion-float-right">
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="aMostrar" (change)="show()">
+            <mat-button-toggle value="pendiente" >Pendientes</mat-button-toggle>
+            <mat-button-toggle value="progreso">En progreso</mat-button-toggle>
+            <mat-button-toggle value="todos">Todos</mat-button-toggle>
+          </mat-button-toggle-group>
+        </ion-item>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col>
         <ion-list>
-          <ion-list-header>
-            <h1>Tareas Pendientes</h1>
-          </ion-list-header>
           <ion-item *ngFor= "let tarea of lista" [routerLink] = "['/tareas', tarea.id]">
             {{tarea.name}}
+            <ion-icon name="radio-button-on" slot='end' [ngClass]="{
+              'pendiente': tarea.estado === '0',
+              'progreso': tarea.estado === '1'}"></ion-icon>
           </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color='tertiary' (click)= "createTask()">
       <ion-icon name="add" ></ion-icon>

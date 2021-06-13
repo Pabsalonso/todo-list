@@ -12,6 +12,7 @@ import { AlertController } from '@ionic/angular';
 
 export class TareaDetailPage implements OnInit {
   tarea: Tarea;
+  estadoNuevo: string;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -23,6 +24,7 @@ export class TareaDetailPage implements OnInit {
     this.activeRoute.paramMap.subscribe(paramMap => {
       const id = paramMap.get('tareaId');
       this.tarea= this.tareasService.getTask(id);
+      this.estadoNuevo = this.tarea.estado;
     });
   }
 
@@ -47,4 +49,7 @@ export class TareaDetailPage implements OnInit {
     await alerta.present();
   }
 
+  updateTask(){
+    this.tareasService.updateTask(this.tarea.id, this.estadoNuevo);
+  }
 }
